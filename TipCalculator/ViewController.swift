@@ -45,7 +45,6 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didTouch(_ sender: Any) {
-        print("Did touch")
         if amountTextField.text == "" {
             UIView.animate(withDuration: 0.3) {
                 self.amountTextField.center.y -= 100
@@ -88,8 +87,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func valueChanged(_ sender: Any) {
-        print("value changed and the value of nonZero is \(nonZero)")
-        
         if !nonZero {
            nonZero = true
             UIView.animate(withDuration: 0.3) {
@@ -124,17 +121,11 @@ class ViewController: UIViewController {
         if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
-            print("will show")
-            //print(keyboardHeight)
-           // print(tipLabel.center.y)
+           
             UIView.animate(withDuration: 0.3) {
                 self.tipLabel.frame.origin.y -= (keyboardHeight)
                 self.tipDisplayLabel.frame.origin.y -= (keyboardHeight)
-                //self.tipLabel.frame.offsetBy(dx: 0, dy: keyboardHeight)
-                //self.tipLabel.frame = CGRect(x: self.tipLabel.frame.origin.x, y: (self.tipLabel.center.y - keyboardHeight), width: self.tipLabel.frame.width, height: self.tipLabel.frame.height)
             }
-            
-            //print(tipLabel.center.y)
         }
     }
     
@@ -142,11 +133,10 @@ class ViewController: UIViewController {
         if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
-            print("will hide")
+    
             if let text = self.amountTextField.text {
                 if text == "" {
                     nonZero = false
-                    print("over here")
                 }
             }
             UIView.animate(withDuration: 0.3) {
